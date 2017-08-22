@@ -1,6 +1,6 @@
 
 #HSLIDE
-## ASDC Software, Structure, Impovements, Known Bugs
+## ASDC Software, Structure, Improvements, Known Bugs
 Gareth Murphy
 
 
@@ -16,7 +16,7 @@ Gareth Murphy
 To start the docker project you must first clone the repository
 
 ```
-git clone git@gitlab.spacecenter.dk:asdc/asdc.git
+git clone https://gitlab.spacecenter.dk/asdc/asdc.git
 ```
 
 ```
@@ -81,11 +81,18 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ---
 ### Structure
 
+- Divided into level0,1,2
+- subdivided into SRD packages
+- Each software requirement has its own directory
 
 ---
 ### Improvements
 
+- 
 ---
-###
+### Known Bugs
+
+- Need to know every data structure
+
 ---
 THANKS
