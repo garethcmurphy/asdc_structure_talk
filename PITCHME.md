@@ -1,20 +1,13 @@
-![LOGO](http://asdc.space.dtu.dk/static/asim/assets/ASDClogoTransparent.png)
 
-#### Get the word out
-<br>
-<span style="color:gray">Markdown Presentations For Everyone</span>
-<br>
-<span style="color:gray">on</span>
-<br>
-<span style="color:gray">GitHub, GitLab, Bitbucket, Gitea, Gogs, and GitBucket</span>
-
+#### ASDC Software, Structure, Impovements, Known Bugs
+- Gareth Murphy
 ---
 
 ### ASDC pipeline is written in Python
 - Datatypes are implemented as Django models
 
 ---
-## Quickstart guide to using the docker containers
+## Using the docker containers
 
 To start the docker project you must first clone the repository
 
@@ -32,7 +25,7 @@ docker exec -it <CONTAINER_NAME> /bin/bash
 ```
 
 
-where <CONTAINER_NAME> is one of:
+where ```<CONTAINER_NAME>``` is one of:
 
 
 asdc_level0_1 , asdc_level1_1 , asdc_level3_1 , asdc_web_1 , asdc_db_1 , asdc_filewriter_1
