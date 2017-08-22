@@ -1,4 +1,4 @@
-![LOGO](https://d1z75bzl1vljy2.cloudfront.net/img/gp-logo.png)
+![LOGO](http://asdc.space.dtu.dk/static/asim/assets/ASDClogoTransparent.png)
 
 #### Get the word out
 <br>
@@ -31,7 +31,7 @@ Create GitPitch slideshow content using GitHub flavored Markdown in your favorit
 
 ---
 
-<span style="color: #e49436">STEP 2. GIT-COMMIT</span>
+<span style="color: #e49436">KNOWN BUGS</span>
 
 ![TERMINAL](https://d1z75bzl1vljy2.cloudfront.net/hello-world/terminal.png)
 
