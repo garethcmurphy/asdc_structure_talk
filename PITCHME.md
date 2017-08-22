@@ -35,18 +35,8 @@ docker exec -it <CONTAINER_NAME> /bin/bash
 where <CONTAINER_NAME> is one of:
 
 
-asdc_level0_1
-
-asdc_level1_1
-
-asdc_level3_1
-
-asdc_web_1
-
-asdc_db_1 
-
-asdc_filewriter_1
-
+asdc_level0_1 , asdc_level1_1 , asdc_level3_1 , asdc_web_1 , asdc_db_1 , asdc_filewriter_1
+---
 E.g. to run migrations use:
 
 ```
@@ -69,6 +59,28 @@ Similarly for level1
 ```
 docker exec -it asdc_level1_1  /bin/bash 
 ```
+---
+1. Start a shell session in level0 container
+```
+docker exec -it dtuspaceasdcbuild_level0_1 /bin/bash
+```
+
+2. Run the level0 script
+```
+./RunLevel0
+```
+(To restore Pacts data run ./RunLevel0Pacts)
+
+3. Start a shell session in level1 container
+```
+docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
+```
+
+4. Run the level1 script
+```
+./RunLevel1
+```
+
 ---
 ### No more <span style="color: #666666">Keynote.</span>
 ### No more <span style="color: #666666">Powerpoint.</span>
