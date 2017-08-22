@@ -1,15 +1,38 @@
 
-#HSLIDE
 ## ASDC Software, Structure, Improvements, Known Bugs
 Gareth Murphy
 
 
-#HSLIDE
 ---
 
-### ASDC pipeline is written in Python
+### ASDC pipeline 
+- pipeline is written in Python
+- MDAP written in C++
 - Datatypes are implemented as Django models
 
+---
+### Example datatype
+
+```
+class MXGSTGFObservation(ASIMBase):
+    observation_id = models.IntegerField('Observation ID')
+    utc_year = models.PositiveSmallIntegerField('UTC year')
+    utc_seconds = models.PositiveIntegerField('UTC seconds')
+    utc_msec = models.PositiveSmallIntegerField('UTC msec')
+    tcp_count_dhpu = models.PositiveIntegerField()
+    tcp_count_dpu = models.PositiveIntegerField()
+    dpu_count = models.PositiveIntegerField()
+    dpu_count_prereset = models.IntegerField()
+    dau_bgo_1_int_tmon_chan1 = models.PositiveSmallIntegerField()
+    dau_bgo_1_int_tmon_chan2 = models.PositiveSmallIntegerField()
+    dau_bgo_1_int_tmon_chan3 = models.PositiveSmallIntegerField()
+    dau_bgo_1_int_tmon_chan4 = models.PositiveSmallIntegerField()
+    dau_bgo_2_int_tmon_chan1 = models.PositiveSmallIntegerField()
+    dau_bgo_2_int_tmon_chan2 = models.PositiveSmallIntegerField()
+    dau_bgo_2_int_tmon_chan3 = models.PositiveSmallIntegerField()
+    dau_bgo_2_int_tmon_chan4 = models.PositiveSmallIntegerField()
+    dau_bgo_3_int_tmon_chan1 = models.PositiveSmallIntegerField()
+```
 ---
 ## Using the docker containers
 
