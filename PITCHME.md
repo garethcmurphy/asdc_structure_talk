@@ -14,6 +14,11 @@ Gareth Murphy
 
 ---
 ![network](assets/FlowOverview.jpg)
+
+---
+![network](assets/PipelineOverview.jpg)
+---
+![network](assets/WebAccessOverview.jpg)
 ---
 ### Illustrative example of telemetry
 
@@ -165,7 +170,7 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ---
 ### Known Bugs
 
-- Need to know every data structure
+- Fails when unexpected packet is received
 
 ---
 THANKS
