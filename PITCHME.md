@@ -7,7 +7,7 @@ Gareth Murphy
 
 ### ASDC pipeline 
 - The pipeline is written in Python 3
-- MDAP written in C++
+- MDAP (MXGS Data Analysis Program) written in C++ (Paul Connell)
 - Telemetry types are implemented as Django models
 
 ---
