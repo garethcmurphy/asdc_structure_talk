@@ -41,7 +41,9 @@ class MXGSTGFObservation(ASIMBase):
 - Each software requirement has its own directory
 ---
 ### Docker 
-- all software configuration files stored as Dockerfiles
+- Pipeline runs on lightweight containers
+- Software installation requirements stored as Dockerfiles
+
 
 ```
 FROM ubuntu:16.04
