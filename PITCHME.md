@@ -39,6 +39,15 @@ class MXGSTGFObservation(ASIMBase):
 - Divided into level0,1,2
 - subdivided into SRD packages
 - Each software requirement has its own directory
+
+---
+
+### Example software requirement
+
+- parser
+
+
+
 ---
 ### Docker 
 - Pipeline runs on lightweight containers
@@ -133,6 +142,16 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ./RunLevel1
 ```
 
+
+---
+
+### TLE forms
+
+- TLE community can submit observations
+
+---
+### Level 0
+ 
 
 ---
 ### Improvements
