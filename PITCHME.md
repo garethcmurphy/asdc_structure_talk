@@ -177,6 +177,7 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ### Known Bugs
 
 - Fails when unexpected packet is received
+- Packet sequences with gaps are not processed
 
 ---
 THANKS
