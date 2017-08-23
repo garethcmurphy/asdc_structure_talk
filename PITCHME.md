@@ -59,7 +59,9 @@ class MXGSTGFObservation(ASIMBase):
 
 ### Example software requirement
 
--  FileWriter
+- 3.1.4 The ASDC shall output all chosen data formats for all processing levels
+The formats are: FITS format [4] and NASA CDF format [3].
+-  Implementation: Filewriter
 
 ---
 ```
