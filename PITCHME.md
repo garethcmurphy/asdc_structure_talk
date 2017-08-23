@@ -6,12 +6,12 @@ Gareth Murphy
 ---
 
 ### ASDC pipeline 
-- pipeline is written in Python
+- The pipeline is written in Python 3
 - MDAP written in C++
-- Datatypes are implemented as Django models
+- Telemetry types are implemented as Django models
 
 ---
-### Example datatype
+### Illustrative example of telemetry
 
 ```
 class MXGSTGFObservation(ASIMBase):
@@ -33,6 +33,36 @@ class MXGSTGFObservation(ASIMBase):
     dau_bgo_2_int_tmon_chan4 = models.PositiveSmallIntegerField()
     dau_bgo_3_int_tmon_chan1 = models.PositiveSmallIntegerField()
 ```
+---
+### Structure
+
+- Divided into level0,1,2
+- subdivided into SRD packages
+- Each software requirement has its own directory
+---
+### Docker 
+- all software configuration files stored as Dockerfiles
+
+```
+FROM ubuntu:16.04
+MAINTAINER Gareth Murphy <gmurphy@space.dtu.dk>
+RUN mkdir /code
+WORKDIR /code
+RUN apt-get update && apt-get install -y \
+        cron \
+        curl \
+        gfortran \
+        libncurses5-dev \
+        libpq-dev \
+        python3-astropy \
+        python3-matplotlib \
+        python3-numpy \
+        python3-pip \
+        python3-scipy \
+        python3-ephem
+COPY requirements.txt /code/
+```
+
 ---
 ## Using the docker containers
 
@@ -101,12 +131,6 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ./RunLevel1
 ```
 
----
-### Structure
-
-- Divided into level0,1,2
-- subdivided into SRD packages
-- Each software requirement has its own directory
 
 ---
 ### Improvements
