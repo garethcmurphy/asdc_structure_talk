@@ -56,6 +56,9 @@ class MXGSTGFObservation(ASIMBase):
 - Each software requirement has its own directory
 
 ---
+### Level 0
+
+---
 
 ### Example software requirement
 
@@ -64,6 +67,7 @@ The formats are: FITS format [4] and NASA CDF format [3].
 -  Implementation: Filewriter
 
 ---
+### Implementation:
 ```
 class CDFWriter(FilewriterBase):
     def write_cdf(self, my_tgf):
@@ -100,6 +104,95 @@ class CDFWriter(FilewriterBase):
 
 
 
+---
+### Known bugs
+
+- CDF library uses  smallest available type, depending on value
+- Fix: manually alter type
+
+---
+### Example Requirement: TGF Parser
+
+- 3.1.1 The ASDC shall archive and process all data packets received from the B.USOC
+The format will be in the CCSDS space telemetry packet format [2].
+- Implementation: MXGSTGFObservationParser()
+---
+```
+class MXGSTGFObservationParserText():
+    def __init__(self):
+        self.address = MXGSAddress()
+
+    def unpack_and_sort(self, bgo_format, bgo_data, time_of_photon_hit):
+        bit_formatted_bgo_list = [BitArray(bin=y) for y in bgo_data]
+        unpack_tuple_list = (
+            [x.unpack(bgo_format) for x in bit_formatted_bgo_list])
+        unpack_sort = sorted(unpack_tuple_list, key=lambda x: x[time_of_photon_hit])
+        return unpack_sort
+
+    def parse(self, masterdata, obsid):
+        mxgstgfobservation = MXGSTGFObservation()
+        x = iter(masterdata)
+
+
+        mxgstgfobservation.observation_id = int(obsid, 16)
+        mxgstgfobservation.utc_year = hex2int(next(x))
+        mxgstgfobservation.utc_msec = hex2int(next(x))
+        mxgstgfobservation.utc_seconds = hex2int(next(x) + next(x))
+        mxgstgfobservation.tcp_count_dhpu = hex2int(next(x) + next(x))
+        mxgstgfobservation.tcp_count_dpu = hex2int(next(x) + next(x))
+        mxgstgfobservation.dpu_count = hex2int(next(x) + next(x))
+        mxgstgfobservation.dpu_count_prereset = hex2int(next(x) + next(x))
+        mxgstgfobservation.dau_bgo_1_int_tmon_chan1 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_1_int_tmon_chan2 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_1_int_tmon_chan3 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_1_int_tmon_chan4 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_2_int_tmon_chan1 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_2_int_tmon_chan2 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_2_int_tmon_chan3 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_2_int_tmon_chan4 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_3_int_tmon_chan1 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_3_int_tmon_chan2 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_3_int_tmon_chan3 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_3_int_tmon_chan4 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_4_int_tmon_chan1 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_4_int_tmon_chan2 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_4_int_tmon_chan3 = hex2int(next(x))
+        mxgstgfobservation.dau_bgo_4_int_tmon_chan4 = hex2int(next(x))
+        mxgstgfobservation.led_short_win_lr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.led_short_win_upr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.led_long_win_lr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.led_long_win_upr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.hed_short_win_lr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.hed_short_win_upr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.hed_long_win_lr_pulse_height = hex2int(next(x))
+        mxgstgfobservation.hed_long_win_upr_pulse_height = hex2int(next(x))
+
+        shortlongwin = next(x)
+        mxgstgfobservation.led_short_win_anticoin_time = hex2int(shortlongwin[0:2])
+        mxgstgfobservation.led_long_win_anticoin_time = hex2int(shortlongwin[2:4])
+        shortlongwin = next(x)
+        mxgstgfobservation.hed_short_win_anticoin_time = hex2int(shortlongwin[0:2])
+        mxgstgfobservation.hed_long_win_anticoin_time = hex2int(shortlongwin[2:4])
+
+        bits = next(x)
+
+        a = BitArray('0x' + bits)
+        mxgstgfobservation.led_short_win_flag1 = a[0]
+        mxgstgfobservation.led_short_win_flag2 = a[1]
+        mxgstgfobservation.led_short_win_flag3 = a[2]
+        mxgstgfobservation.led_long_win_flag = a[3]
+        mxgstgfobservation.hed_short_win_flag1 = a[4]
+        mxgstgfobservation.hed_short_win_flag2 = a[5]
+        mxgstgfobservation.hed_short_win_flag3 = a[6]
+        mxgstgfobservation.hed_long_win_flag = a[7]
+
+        mxgstgfobservation.trig_mmia_enabled = a[8]
+        mxgstgfobservation.trig_mmia_recd = a[9]
+```
+---
+### Known bugs:
+- Time order can be non-sequential
+- Most significant digit is missing from time
 ---
 ### Docker 
 - Pipeline runs on lightweight containers
@@ -201,9 +294,7 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 
 - TLE community can submit observations
 
----
-### Level 0
- 
+
 
 ---
 ### Improvements
