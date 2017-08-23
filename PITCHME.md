@@ -20,6 +20,12 @@ Gareth Murphy
 ---
 ![network](assets/WebAccessOverview.jpg)
 ---
+![network](assets/level0.png)
+---
+![network](assets/level1.png)
+---
+![network](assets/level2.png)
+---
 ### Illustrative example of telemetry
 
 ```
