@@ -156,6 +156,7 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ---
 ### Improvements
 
+- Need to add on-board and on-ground processing from CE TN
 - 
 ---
 ### Known Bugs
