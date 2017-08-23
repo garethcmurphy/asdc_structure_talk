@@ -59,7 +59,42 @@ class MXGSTGFObservation(ASIMBase):
 
 ### Example software requirement
 
-- parser
+-  FileWriter
+
+---
+```
+class CDFWriter(FilewriterBase):
+    def write_cdf(self, my_tgf):
+        self.observation_dict = model_to_dict(my_tgf)
+        self.set_file_name()
+        self.write_dict_to_cdf(self.observation_dict)
+
+    def write_dict_to_cdf(self, my_tgf_dict):
+        self.set_file_name()
+        print(self.file_name)
+        self.remove_file()
+        pycdf.lib.set_backward(False)
+        cdf = pycdf.CDF(self.file_name, '')
+        for key, val in my_tgf_dict.items():
+            if key not in self.invalid_keys:
+                if val is None:
+                    val = [0]
+                cdf_type = self.determine_cdftype(key, val)
+
+                if isinstance(val, list):
+                    cdf_type = self.determine_cdftype(key, max(val))
+
+                if cdf_type is not None:
+                    print(cdf_type)
+                    cdf.new(key, val, recVary=False, type=cdf_type)
+                else:
+                    cdf.new(key, val, recVary=False)
+
+        cdf.attrs['Author'] = 'Gareth Murphy <gmurphy@space.dtu.dk>'
+        cdf.attrs['CreateDate'] = datetime.datetime.now()
+        # print(cdf.attrs)
+        cdf.close()
+```
 
 
 
