@@ -1,5 +1,5 @@
 
-## ASDC Software, Structure, Improvements, Known Bugs
+## ASDC Software Structure
 Gareth Murphy
 
 DTU Space
