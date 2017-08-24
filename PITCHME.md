@@ -22,8 +22,7 @@ DTU Space
 
 ---
 ![network](assets/WebAccessOverview.jpg)
----
-![network](assets/level0.png)
+
 
 ---
 ### Illustrative example of telemetry type
@@ -59,7 +58,8 @@ class MXGSTGFObservation(ASIMBase):
 
 ---
 ### Level 0
-
+---
+![level0](assets/level0.png)
 ---
 ```
 level0
