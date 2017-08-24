@@ -15,8 +15,7 @@ DTU Space
 - Telemetry datatypes are implemented as Django models
 
 
----
-?image=assets/FlowOverview.jpg&size=contain
+---?image=assets/FlowOverview.jpg&size=contain
 
 
 
