@@ -16,11 +16,10 @@ DTU Space
 
 
 ---?image=assets/FlowOverview.jpg&size=contain
+---?image=assets/PipelineOverview.jpg&size=contain
 
 
 
----
-![network](assets/PipelineOverview.jpg)
 ---
 ![network](assets/WebAccessOverview.jpg)
 ---
@@ -404,12 +403,9 @@ class mdap_dat(object):
             minortick.set_color('white')
             minortick.set_alpha(0.5)
 ```
----
-![mdap_image](assets/MDAP_image_nadir_fov_mlh.png)
----
-![mdap_spectrum](assets/MDAP_detector_count_spectrum.png)
----
-![mdapshadowgram](assets/MDAP_detector_event_list_CZT.png)
+---?image=assets/MDAP_image_nadir_fov_mlh.png&size=contain
+---?image=assets/MDAP_detector_count_spectrum.png&size=contain
+---?image=assets/MDAP_detector_event_list_CZT.png&size=contain
 ---
 ### Known bugs
 
