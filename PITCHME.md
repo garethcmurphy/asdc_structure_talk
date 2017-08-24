@@ -52,11 +52,10 @@ class MXGSTGFObservation(ASIMBase):
 ### Structure
 
 -  The pipeline is divided into three processing levels
-- Level 0 - Reconstructed unprocessed instrument data @ full resolution
-- Level 1 - Reconstructed instrument data, time referenced, with ancillary information, including calibration & georeferencing
+- Level 0 - Reconstructed, unprocessed instrument data @ full resolution
+- Level 1 - Reconstructed instrument data, time referenced, including calibration & georeferencing metadata
 - Level 2 - Derived environmental variables at same resolution and location as Level I. 
 - Each level is subdivided into packages which map to SRD
-- Each software requirement has its own directory
 
 ---
 ### Level 0
