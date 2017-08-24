@@ -61,6 +61,95 @@ class MXGSTGFObservation(ASIMBase):
 ### Level 0
 
 ---
+```
+level0
+├── level0/OutputLevel0Data
+│   └── level0/OutputLevel0Data/OutputLevel0Data.py
+├── level0/RetrieveDataFromBUSOC
+│   └── level0/RetrieveDataFromBUSOC/RetrieveDataFromCGSpace.py
+├── level0/RunLevel0Pacts.py
+├── level0/UnpackFromCCSDS
+│   ├── level0/UnpackFromCCSDS/ImportPointSourceData.py
+│   ├── level0/UnpackFromCCSDS/ImportSVTData.py
+│   ├── level0/UnpackFromCCSDS/ImportTestDatatoMainDatabase.py
+│   └── level0/UnpackFromCCSDS/parser
+│       ├── level0/UnpackFromCCSDS/parser/BaseParser.py
+│       ├── level0/UnpackFromCCSDS/parser/CommandVerificationParser.py
+│       ├── level0/UnpackFromCCSDS/parser/ContinuationScienceDataTMHeaderParser.py
+│       ├── level0/UnpackFromCCSDS/parser/FileFinder.py
+│       ├── level0/UnpackFromCCSDS/parser/InitialScienceDataTMHeaderParser.py
+│       ├── level0/UnpackFromCCSDS/parser/PacketCount.py
+│       ├── level0/UnpackFromCCSDS/parser/PactsHeaderParser.py
+│       ├── level0/UnpackFromCCSDS/parser/ParsePointSourceData.py
+│       ├── level0/UnpackFromCCSDS/parser/ParseSVTDataPackets.py
+│       ├── level0/UnpackFromCCSDS/parser/ParseTestDataPackets.py
+│       ├── level0/UnpackFromCCSDS/parser/Tests
+│       │   ├── level0/UnpackFromCCSDS/parser/Tests/iss_tests
+│       │   │   └── level0/UnpackFromCCSDS/parser/Tests/iss_tests/test_iss.py
+│       │   ├── level0/UnpackFromCCSDS/parser/Tests/mmiatests
+│       │   │   ├── level0/UnpackFromCCSDS/parser/Tests/mmiatests/MMIATestViews.py
+│       │   │   ├── level0/UnpackFromCCSDS/parser/Tests/mmiatests/testMMIAObservationParser.py
+│       │   │   └── level0/UnpackFromCCSDS/parser/Tests/mmiatests/test_files
+│       │   └── level0/UnpackFromCCSDS/parser/Tests/mxgstests
+│       │       ├── level0/UnpackFromCCSDS/parser/Tests/mxgstests/testMXGSAddress.py
+│       │       ├── level0/UnpackFromCCSDS/parser/Tests/mxgstests/testMXGSHousekeeping.py
+│       │       ├── level0/UnpackFromCCSDS/parser/Tests/mxgstests/testSampleDetectorCounts.py
+│       │       └── level0/UnpackFromCCSDS/parser/Tests/mxgstests/unused_mxgs_obs.py
+│       ├── level0/UnpackFromCCSDS/parser/asimdatetime
+│       │   ├── level0/UnpackFromCCSDS/parser/asimdatetime/ASIMDateTime.py
+│       │   └── level0/UnpackFromCCSDS/parser/asimdatetime/leapseconds.py
+│       ├── level0/UnpackFromCCSDS/parser/asimprivate
+│       │   ├── level0/UnpackFromCCSDS/parser/asimprivate/ASIMClassDefs.py
+│       │   ├── level0/UnpackFromCCSDS/parser/asimprivate/ASIMPrivateHeaderParser.py
+│       │   └── level0/UnpackFromCCSDS/parser/asimprivate/ASIMSourceDefinitions.py
+│       ├── level0/UnpackFromCCSDS/parser/ccsds
+│       │   └── level0/UnpackFromCCSDS/parser/ccsds/CCSDSParser.py
+│       ├── level0/UnpackFromCCSDS/parser/dhpu
+│       │   ├── level0/UnpackFromCCSDS/parser/dhpu/DHPUEventIds.py
+│       │   ├── level0/UnpackFromCCSDS/parser/dhpu/DHPUEventParser.py
+│       │   ├── level0/UnpackFromCCSDS/parser/dhpu/DHPUHousekeepingParser.py
+│       │   ├── level0/UnpackFromCCSDS/parser/dhpu/DHPUParser.py
+│       │   └── level0/UnpackFromCCSDS/parser/dhpu/ParseDHPUPackets.py
+│       ├── level0/UnpackFromCCSDS/parser/iss
+│       │   ├── level0/UnpackFromCCSDS/parser/iss/iss_broadcast_ancillary_data.py
+│       │   └── level0/UnpackFromCCSDS/parser/iss/iss_predict.py
+│       ├── level0/UnpackFromCCSDS/parser/iss_predict
+│       ├── level0/UnpackFromCCSDS/parser/mmia
+│       │   ├── level0/UnpackFromCCSDS/parser/mmia/MMIACommandVerificationReportParser.py
+│       │   ├── level0/UnpackFromCCSDS/parser/mmia/MMIAEnumerationSelector.py
+│       │   ├── level0/UnpackFromCCSDS/parser/mmia/MMIAEventReportParser.py
+│       │   ├── level0/UnpackFromCCSDS/parser/mmia/MMIAHousekeepingParser.py
+│       │   ├── level0/UnpackFromCCSDS/parser/mmia/MMIAObservationParser.py
+│       │   ├── level0/UnpackFromCCSDS/parser/mmia/MMIAParser.py
+│       │   └── level0/UnpackFromCCSDS/parser/mmia/MMIA_Compression_Decompression_Cramming_Uncramming
+│       └── level0/UnpackFromCCSDS/parser/mxgs
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/HousekeepingBuffer.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSAddress.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSAuroralCaptureObservationParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSBGODAU1FullHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSBGODAUSummaryHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSBackgroundObservationParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSBinaryParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSCZTDAU1FullHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSCZTDAUSummaryHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSEventReportParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSFactory.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSInstrumentSummaryHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSMonitoredHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSPSUFullHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSProcessPhotonList.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSPulseHeightSpectrumObservationParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSRatemeterHousekeepingParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSReadBrokenPackets.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSSampledDetectorCountsParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSTGFObservationParser.py
+│           ├── level0/UnpackFromCCSDS/parser/mxgs/MXGSTMDefs.py
+│           └── level0/UnpackFromCCSDS/parser/mxgs/ParseMXGSPackets.py
+├── level0/iss_data
+└── level0/mmia
+    └── level0/mmia/MMIA_Compression_Decompression_Cramming_Uncramming
+```
+---
 
 ### Example software requirement
 
