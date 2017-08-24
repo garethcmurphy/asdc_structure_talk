@@ -9,10 +9,10 @@ DTU Space
 ---
 
 ### ASDC pipeline 
-- The pipeline is written in Python 3.5
+- The ASDC pipeline software is written in Python 3.5
 - MDAP (MXGS Data Analysis Program) written in C++ (Paul Connell)
 - UB software contributed in Matlab
-- Telemetry types are implemented as Django models
+- Telemetry datatypes are implemented as Django models
 
 
 ---
@@ -26,7 +26,7 @@ DTU Space
 ![network](assets/level0.png)
 
 ---
-### Illustrative example of telemetry
+### Illustrative example of telemetry type
 
 ```
 class MXGSTGFObservation(ASIMBase):
