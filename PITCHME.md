@@ -193,8 +193,6 @@ class MXGSTGFObservationParserText():
 ```
 ---
 ### Known bugs:
-- Time order can be non-sequential
-- Most significant digit is missing from time
 - Fails when nonstandard packet is received
 - Packet sequences with gaps are not processed
 ---
