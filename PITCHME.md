@@ -21,10 +21,7 @@ Gareth Murphy
 ![network](assets/WebAccessOverview.jpg)
 ---
 ![network](assets/level0.png)
----
-![network](assets/level1.png)
----
-![network](assets/level2.png)
+
 ---
 ### Illustrative example of telemetry
 
@@ -195,7 +192,11 @@ class MXGSTGFObservationParserText():
 - Most significant digit is missing from time
 ---
 ### Level 1
+---
+![level1](assets/level1.png)
 
+---
+### Example requirement
 - Unit conversion
 
 ---
@@ -264,13 +265,83 @@ class MXGSUnitConversion(object):
 
 ```
 ---
+### Improvements
+
+- add conversions for other variables
+
+---
+![network](assets/level2.png)
+---
 ### Level 2
 - Compile and run MDAP
 
 ---
 ```
+class mdap_dat(object):
+    def __init__(self):
+        self.xaxisdata = 0
+        self.yaxisdata = 0
+        self.heads = 0
+        self.outname = 0
+        self.comments = 0
+        self.units = 0
+        self.plottitle = 0
+        self.xtitle = 0
+        self.ytitle = 0
+        self.xsize = 4
+        self.ysize = 3
+        self.scidata = 0
+        self.dmsize = 4.1
+
+    def get_data_from_fitsfile(self, filename):
+        hdulist = fits.open(filename)
+        hdulist.info()
+        self.scidata = hdulist[0].data
+        regx = re.compile('fits\\b')
+        self.outname = regx.sub('png', filename)
+
+    def plot_fits_image(self):
+        # print hdulist[0].header
+        self.figure_config()
+        fig, ax1 = self.figure_setup()
+        im = plt.imshow(self.scidata, extent=[-42, 42, -42, 42], cmap=cm.plasma)
+
+        self.set_tick_marks(ax1)
+
+        for tick in ax1.get_yticklines():
+            tick.set_color('white')
+            tick.set_alpha(0.5)
+        self.plottitle = 'MXGS nadir FOV image for event: '
+        labelstr = 'Nadir %s-offset angle (deg)'
+        self.ytitle = labelstr % 'y'
+        self.xtitle = labelstr % 'x'
+        plt.colorbar(im, fraction=0.046, pad=0.14, orientation='horizontal')
+        self.figure_wrapup(fig, ax1)
+
+    def set_tick_marks(self, ax1):
+        majorLocator = MultipleLocator(5)
+        minorLocator = MultipleLocator(1)
+        ax1.xaxis.set_major_locator(majorLocator)
+        ax1.xaxis.set_minor_locator(minorLocator)
+        ax1.yaxis.set_major_locator(majorLocator)
+        ax1.yaxis.set_minor_locator(minorLocator)
+        ax1.get_yaxis().set_tick_params(direction='in', which='both')
+        ax1.get_xaxis().set_tick_params(direction='in', which='both', color='black')
+        for tick in ax1.get_xticklines():
+            tick.set_color('white')
+            tick.set_alpha(0.5)
+        for minortick in ax1.xaxis.get_minorticklines():
+            minortick.set_color('white')
+            minortick.set_alpha(0.5)
+        for minortick in ax1.yaxis.get_minorticklines():
+            minortick.set_color('white')
+            minortick.set_alpha(0.5)
 ```
 
+---
+### Known bugs
+
+- bash script aliases need to be available
 ---
 ### Docker 
 - Pipeline runs on lightweight containers
