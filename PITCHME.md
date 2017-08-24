@@ -25,27 +25,60 @@ DTU Space
 
 
 ---
-### Illustrative example of telemetry type
+### Example of telemetry type
 
 ```
 class MXGSTGFObservation(ASIMBase):
     observation_id = models.IntegerField('Observation ID')
-    utc_year = models.PositiveSmallIntegerField('UTC year')
-    utc_seconds = models.PositiveIntegerField('UTC seconds')
-    utc_msec = models.PositiveSmallIntegerField('UTC msec')
-    tcp_count_dhpu = models.PositiveIntegerField()
-    tcp_count_dpu = models.PositiveIntegerField()
-    dpu_count = models.PositiveIntegerField()
-    dpu_count_prereset = models.IntegerField()
-    dau_bgo_1_int_tmon_chan1 = models.PositiveSmallIntegerField()
-    dau_bgo_1_int_tmon_chan2 = models.PositiveSmallIntegerField()
-    dau_bgo_1_int_tmon_chan3 = models.PositiveSmallIntegerField()
-    dau_bgo_1_int_tmon_chan4 = models.PositiveSmallIntegerField()
-    dau_bgo_2_int_tmon_chan1 = models.PositiveSmallIntegerField()
-    dau_bgo_2_int_tmon_chan2 = models.PositiveSmallIntegerField()
-    dau_bgo_2_int_tmon_chan3 = models.PositiveSmallIntegerField()
-    dau_bgo_2_int_tmon_chan4 = models.PositiveSmallIntegerField()
-    dau_bgo_3_int_tmon_chan1 = models.PositiveSmallIntegerField()
+    utc_year = UnsignedIntegerField16bit('UTC year')
+    utc_seconds = UnsignedIntegerField32bit()
+    utc_msec = UnsignedIntegerField16bit('UTC msec')
+    tcp_count_dhpu = UnsignedIntegerField32bit()
+    tcp_count_dpu = UnsignedIntegerField32bit()
+    dpu_count = UnsignedIntegerField32bit()
+    dpu_count_prereset = UnsignedIntegerField32bit()
+    dau_bgo_1_int_tmon_chan1 = UnsignedIntegerField16bit()
+    dau_bgo_1_int_tmon_chan2 = UnsignedIntegerField16bit()
+    dau_bgo_1_int_tmon_chan3 = UnsignedIntegerField16bit()
+    dau_bgo_1_int_tmon_chan4 = UnsignedIntegerField16bit()
+    dau_bgo_2_int_tmon_chan1 = UnsignedIntegerField16bit()
+    dau_bgo_2_int_tmon_chan2 = UnsignedIntegerField16bit()
+    dau_bgo_2_int_tmon_chan3 = UnsignedIntegerField16bit()
+    dau_bgo_2_int_tmon_chan4 = UnsignedIntegerField16bit()
+    dau_bgo_3_int_tmon_chan1 = UnsignedIntegerField16bit()
+    dau_bgo_3_int_tmon_chan2 = UnsignedIntegerField16bit()
+    dau_bgo_3_int_tmon_chan3 = UnsignedIntegerField16bit()
+    dau_bgo_3_int_tmon_chan4 = UnsignedIntegerField16bit()
+    dau_bgo_4_int_tmon_chan1 = UnsignedIntegerField16bit()
+    dau_bgo_4_int_tmon_chan2 = UnsignedIntegerField16bit()
+    dau_bgo_4_int_tmon_chan3 = UnsignedIntegerField16bit()
+    dau_bgo_4_int_tmon_chan4 = UnsignedIntegerField16bit()
+    led_short_win_lr_pulse_height = UnsignedIntegerField16bit()
+    led_short_win_upr_pulse_height = UnsignedIntegerField16bit()
+    led_long_win_lr_pulse_height = UnsignedIntegerField16bit()
+    led_long_win_upr_pulse_height = UnsignedIntegerField16bit()
+    hed_short_win_lr_pulse_height = UnsignedIntegerField16bit()
+    hed_short_win_upr_pulse_height = UnsignedIntegerField16bit()
+    hed_long_win_lr_pulse_height = UnsignedIntegerField16bit()
+    hed_long_win_upr_pulse_height = UnsignedIntegerField16bit()
+    led_short_win_anticoin_time = UnsignedIntegerField16bit()
+    led_long_win_anticoin_time = UnsignedIntegerField16bit()
+    hed_short_win_anticoin_time = UnsignedIntegerField16bit()
+    hed_long_win_anticoin_time = UnsignedIntegerField16bit()
+    led_short_win_flag1 = models.BooleanField()
+    led_short_win_flag2 = models.BooleanField()
+    led_short_win_flag3 = models.BooleanField()
+    led_long_win_flag = models.BooleanField()
+    hed_short_win_flag1 = models.BooleanField()
+    hed_short_win_flag2 = models.BooleanField()
+    hed_short_win_flag3 = models.BooleanField()
+    hed_long_win_flag = models.BooleanField()
+    trig_mmia_enabled = models.BooleanField()
+    trig_mmia_recd = models.BooleanField()
+    led_short_win_dur_1 = UnsignedIntegerField16bit()
+    led_short_win_dur_2 = UnsignedIntegerField16bit()
+    led_short_win_dur_3 = UnsignedIntegerField16bit()
+    led_long_win_dur = UnsignedIntegerField16bit()
 ```
 ---
 ### Structure
@@ -157,6 +190,35 @@ level0
 The formats are: FITS format [4] and NASA CDF format [3].
 -  Implementation: Filewriter
 
+---
+### Implementation:
+```
+filewriter
+├── filewriter/AllFileWriter.py
+├── filewriter/CDFWriter
+│   └── filewriter/CDFWriter/CDFWriter.py
+├── filewriter/CSVWriter
+│   └── filewriter/CSVWriter/CSVWriter.py
+├── filewriter/FileTagger.py
+├── filewriter/FilewriterBase.py
+├── filewriter/FitsWriter
+│   └── filewriter/FitsWriter/FitsWriter.py
+├── filewriter/PGMWriter
+│   └── filewriter/PGMWriter/PGMWriter.py
+├── filewriter/PlotLightningWorldMap.py
+├── filewriter/ReadDisabledPixels
+│   └── filewriter/ReadDisabledPixels/ReadDisabledPixels.py
+├── filewriter/Tests
+│   └── filewriter/Tests/testFileWrite.py
+├── filewriter/Vaisala_global.py
+├── filewriter/WriteBackground.py
+├── filewriter/WriteSampleDetectorCount.py
+├── filewriter/all_dau.py
+├── filewriter/all_phs.py
+├── filewriter/app.py
+├── filewriter/level1plotlightcurve.py
+└── filewriter/level1plotting.py
+```
 ---
 ### Implementation:
 ```
