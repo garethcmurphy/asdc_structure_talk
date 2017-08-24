@@ -21,7 +21,7 @@ DTU Space
 
 
 ---
-![network](assets/WebAccessOverview.jpg)
+![web_access](assets/WebAccessOverview.jpg)
 
 
 ---
@@ -491,7 +491,7 @@ class MXGSUnitConversion(object):
 ---
 ### Level 2
 ---
-![network](assets/level2.png)
+![level2](assets/level2.png)
 ---
 ```
 class mdap_dat(object):
