@@ -1,6 +1,9 @@
 
 ## ASDC Software, Structure, Improvements, Known Bugs
 Gareth Murphy
+
+DTU Space
+
 28-08-2017
 
 ---
