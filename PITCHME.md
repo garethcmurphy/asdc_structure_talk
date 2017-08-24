@@ -590,7 +590,7 @@ COPY requirements.txt /code/
 ---
 ## Using the docker containers
 
-To start the docker project you must first clone the repository
+To access containers, first clone the repository
 
 ```
 git clone https://gitlab.spacecenter.dk/asdc/asdc.git
