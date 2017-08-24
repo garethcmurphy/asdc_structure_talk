@@ -196,6 +196,68 @@ class MXGSTGFObservationParserText():
 ![level1](assets/level1.png)
 
 ---
+### level 1 structure
+```
+level1
+├── level1/AddAttitudeData
+│   └── level1/AddAttitudeData/AddAttitudeData.py
+├── level1/ApplyCalibrationRoutines
+│   └── level1/ApplyCalibrationRoutines/LEDCalibrationMatrix.py
+├── level1/CleanForInstrumentIssues
+│   ├── level1/CleanForInstrumentIssues/AcceptedCountsFiltering.py
+│   ├── level1/CleanForInstrumentIssues/CleanForInstrumentIssues.py
+│   ├── level1/CleanForInstrumentIssues/CorrectTimeOrdering.py
+│   ├── level1/CleanForInstrumentIssues/HotPixelFilter.py
+│   └── level1/CleanForInstrumentIssues/TriggerAlgorithm.py
+├── level1/ConvertToPhysicalValues
+│   ├── level1/ConvertToPhysicalValues/mmia
+│   │   ├── level1/ConvertToPhysicalValues/mmia/MMIAHousekeepingUnitConverter.py
+│   │   └── level1/ConvertToPhysicalValues/mmia/MMIAPhotonFlux.py
+│   └── level1/ConvertToPhysicalValues/mxgs
+│       ├── level1/ConvertToPhysicalValues/mxgs/AbstractUnitConverter.py
+│       ├── level1/ConvertToPhysicalValues/mxgs/MXGSInstrumentSummaryHousekeepingUnitConversion.py
+│       ├── level1/ConvertToPhysicalValues/mxgs/MXGSTGFObservationUnitConversion.py
+│       ├── level1/ConvertToPhysicalValues/mxgs/MXGSUnitConversion.py
+│       ├── level1/ConvertToPhysicalValues/mxgs/MXGSUnitConverterFactory.py
+│       └── level1/ConvertToPhysicalValues/mxgs/convert_generator.py
+├── level1/EstimateTriggerEventType
+│   └── level1/EstimateTriggerEventType/EstimateTriggerEventType.py
+├── level1/GetCalibrationRoutines
+│   └── level1/GetCalibrationRoutines/GetCalibrationRoutines.py
+├── level1/OutputLevel1Data
+│   └── level1/OutputLevel1Data/OutputLevel1Data.py
+├── level1/SearchUndetectedEventsMMIA
+├── level1/SearchUndetectedTriggers
+│   └── level1/SearchUndetectedTriggers/SearchUndetectedTriggers.py
+├── level1/TimeCorrelateMXGSMMIA
+├── level1/geotag
+│   ├── level1/geotag/GeoTag.py
+│   └── level1/geotag/file_rename.py
+├── level1/mmia
+│   └── level1/mmia/MMIA_ORBIT_FOV
+│       ├── level1/mmia/MMIA_ORBIT_FOV/CHU_Pos.py
+│       ├── level1/mmia/MMIA_ORBIT_FOV/CHU_Pos_Test.py
+│       ├── level1/mmia/MMIA_ORBIT_FOV/ISS_Orbit_File.py
+│       ├── level1/mmia/MMIA_ORBIT_FOV/ISS_Orbit_Predict.py
+│       ├── level1/mmia/MMIA_ORBIT_FOV/MMIA_YPR_Error.py
+│       ├── level1/mmia/MMIA_ORBIT_FOV/MMIA_YPR_Test.py
+│       ├── level1/mmia/MMIA_ORBIT_FOV/MXGS_Pos.py
+│       └── level1/mmia/MMIA_ORBIT_FOV/MXGS_Pos_Test.py
+├── level1/sample_detector_counts.py
+├── level1/sanity_check
+│   ├── level1/sanity_check/MXGSMonitoredHousekeepingSanityCheck.py
+│   └── level1/sanity_check/MXGSSanityCheckFactory.py
+└── level1/test
+    ├── level1/test/test_bin_data.py
+    ├── level1/test/test_calibration.py
+    ├── level1/test/test_file_rename.py
+    ├── level1/test/test_onboard_processing.py
+    ├── level1/test/test_plot_tgf_spectrum.py
+    ├── level1/test/test_time_correlate.py
+    └── level1/test/test_unit_conversion.py
+```
+
+---
 ### Example requirement
 - Unit conversion
 
