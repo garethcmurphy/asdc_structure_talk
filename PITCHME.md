@@ -269,12 +269,11 @@ class MXGSUnitConversion(object):
 
 - add conversions for other variables
 
----
-![network](assets/level2.png)
+
 ---
 ### Level 2
-- Compile and run MDAP
-
+---
+![network](assets/level2.png)
 ---
 ```
 class mdap_dat(object):
@@ -337,7 +336,12 @@ class mdap_dat(object):
             minortick.set_color('white')
             minortick.set_alpha(0.5)
 ```
-
+---
+![mdap_image](assets/MDAP_image_nadir_fov_mlh.png)
+---
+![mdap_spectrum](assets/MDAP_detector_count_spectrum.png)
+---
+![mdapshadowgram](assets/MDAP_detector_event_list_CZT.png)
 ---
 ### Known bugs
 
