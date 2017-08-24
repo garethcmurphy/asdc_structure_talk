@@ -194,6 +194,82 @@ class MXGSTGFObservationParserText():
 - Time order can be non-sequential
 - Most significant digit is missing from time
 ---
+### Level 1
+
+- Unit conversion
+
+---
+```
+class MXGSUnitConversion(object):
+    def __init__(self):
+        self.temp_add_50 = -50.02
+        self.temp_mult_50 = 0.510
+        self.temp_add_60 = -60.0
+        self.temp_mult_60 = 0.463
+        self.bgo_temp_add = -273.15
+        self.bgo_temp_mult = 830.6
+        self.check_if_tables_populated()
+        c_temp_3 = MXGSCTemp3.objects.latest('latest_datetime')
+        c_temp_2 = MXGSCTemp2.objects.latest('latest_datetime')
+        c_temp_1 = MXGSCTemp1.objects.latest('latest_datetime')
+
+        self.c_temp_mxgs_3_raw = c_temp_3.raw
+        self.c_temp_mxgs_3_temp = c_temp_3.temperature
+        self.c_temp_mxgs_2_raw = c_temp_2.raw
+        self.c_temp_mxgs_2_temp = c_temp_2.temperature
+        self.c_temp_mxgs_1_raw = c_temp_1.raw
+        self.c_temp_mxgs_1_temp = c_temp_1.temperature
+
+    def check_if_tables_populated(self):
+        if MXGSCTemp3.objects.all().exists():
+            pass
+        else:
+            naive_datetime = datetime.datetime.now()
+            datetime_with_tz = naive_datetime.replace(tzinfo=pytz.UTC)
+            MXGSCTemp3.objects.create(latest_datetime=datetime_with_tz,
+                                      raw=[4003, 3903, 3728, 3448, 3051, 2558, 2029, 1534, 1119, 800, 567, 402, 287],
+                                      temperature=[-60.04, -49.97, -39.99, -29.99, -20.01, -10.00, 0.01, 10.00, 20.00,
+                                                   29.99, 39.99, 50.00, 60.01])
+            MXGSCTemp2.objects.create(latest_datetime=datetime.datetime.now(),
+                                      raw=[4009, 3936, 3817, 3639, 3387, 3061, 2675, 2258, 1846, 1469, 1147, 885, 679],
+                                      temperature=[-49.98, -40.03, -29.97, -20.02, -10.00, 0.00, 10.00, 19.99, 29.99,
+                                                   40.01, 50.01, 60.00, 69.98])
+            MXGSCTemp1.objects.create(latest_datetime=datetime.datetime.now(),
+                                      raw=[3891, 3009, 2936, 2886, 2838],
+                                      temperature=[-34.84, 30.59, 37.85, 41.46, 45.06])
+
+    def bgo_temp_convert(self, raw_temp, nref):
+        if nref == 0:
+            nref = 3103
+            print("nref zero -setting to nominal value")
+        return self.bgo_temp_add + self.bgo_temp_mult * raw_temp / nref
+
+    def to_celsius_60(self, raw_temperature):
+        return self.temp_add_60 + self.temp_mult_60 * raw_temperature
+
+    def to_celsius_50(self, raw_temperature):
+        return self.temp_add_50 + self.temp_mult_50 * raw_temperature
+
+    def e1_evap_conversion(self, raw_temperature):
+        temperature_in_celsius = numpy.interp(raw_temperature, self.c_temp_mxgs_3_raw, self.c_temp_mxgs_3_temp)
+        return temperature_in_celsius
+
+    def e2_thermistor_conversion(self, raw_temperature):
+        temperature_in_celsius = numpy.interp(raw_temperature, self.c_temp_mxgs_2_raw, self.c_temp_mxgs_2_temp)
+        return temperature_in_celsius
+
+    def e3_fpga_conversion(self, raw_temperature):
+        temperature_in_celsius = numpy.interp(raw_temperature, self.c_temp_mxgs_1_raw, self.c_temp_mxgs_1_temp)
+        return temperature_in_celsius
+
+```
+---
+### Level 2
+- Compile and run MDAP
+
+---
+
+---
 ### Docker 
 - Pipeline runs on lightweight containers
 - Software installation requirements stored as Dockerfiles
