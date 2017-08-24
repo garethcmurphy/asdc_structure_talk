@@ -1,5 +1,5 @@
 
-## ASDC Software Structure
+## ASDC Pipeline Software Structure
 Gareth Murphy
 
 DTU Space
