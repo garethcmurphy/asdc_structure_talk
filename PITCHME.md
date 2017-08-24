@@ -195,6 +195,8 @@ class MXGSTGFObservationParserText():
 ### Known bugs:
 - Time order can be non-sequential
 - Most significant digit is missing from time
+- Fails when nonstandard packet is received
+- Packet sequences with gaps are not processed
 ---
 ### Level 1
 ---
@@ -517,12 +519,6 @@ docker exec -it dtuspaceasdcbuild_level1_1 /bin/bash
 ### Improvements
 
 - Need to add on-board and on-ground processing from CE TN
-- 
----
-### Known Bugs
-
-- Fails when unexpected packet is received
-- Packet sequences with gaps are not processed
 
 ---
 ### Thank you
