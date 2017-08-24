@@ -5,3 +5,5 @@ slide-number: true
 highlight : solarized-light
 
 logo : assets/logo.png
+
+theme : sky
