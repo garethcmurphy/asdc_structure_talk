@@ -16,7 +16,9 @@ DTU Space
 
 
 ---
-![network](assets/FlowOverview.jpg)
+?image=assets/FlowOverview.jpg&size=contain
+
+
 
 ---
 ![network](assets/PipelineOverview.jpg)
