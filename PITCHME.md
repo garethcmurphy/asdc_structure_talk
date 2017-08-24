@@ -6,7 +6,7 @@ Gareth Murphy
 ---
 
 ### ASDC pipeline 
-- The pipeline is written in Python 3
+- The pipeline is written in Python 3.5
 - MDAP (MXGS Data Analysis Program) written in C++ (Paul Connell)
 - UB software contributed in Matlab
 - Telemetry types are implemented as Django models
@@ -48,8 +48,11 @@ class MXGSTGFObservation(ASIMBase):
 ---
 ### Structure
 
-- Divided into level0,1,2
-- subdivided into SRD packages
+-  The pipeline is divided into three processing levels
+- Level 0 - Reconstructed unprocessed instrument data at full resolution
+- Level 1  - Reconstructed instrument data time referenced, and annotated with ancillary information, including calibration coefficients and georeferencing
+- Level 2 - Derived environmental variables at the same resolution and location as the Level I source data. 
+- Each level is subdivided into packages which map to requirements in the SRD
 - Each software requirement has its own directory
 
 ---
