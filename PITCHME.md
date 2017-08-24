@@ -28,6 +28,7 @@ DTU Space
 ### Example of telemetry type
 
 ```
+
 class MXGSTGFObservation(ASIMBase):
     observation_id = models.IntegerField('Observation ID')
     utc_year = UnsignedIntegerField16bit('UTC year')
